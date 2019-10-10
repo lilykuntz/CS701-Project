@@ -1,14 +1,15 @@
 package com.example.freeseas;
 
 import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.RadioButton;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,11 +18,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -41,26 +42,47 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         // Add a marker in Philippines, and move the camera.
-        LatLng philippines = new LatLng(13, 118);
+        final LatLng philippines = new LatLng(13, 118);
         mMap.addMarker(new MarkerOptions()
                 .position(philippines)
                 .title("Marker in the Philippines")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(philippines, 5));
         final Button button = findViewById(R.id.button_id);
+        final Button buttonPlace = findViewById(R.id.button_id2);
+        final Button buttonDone = findViewById(R.id.button_id3);
         final FrameLayout frameLayout = findViewById(R.id.frame_id);
+        final RadioButton dangerous = findViewById(R.id.radioButton4);
+        final EditText name = findViewById(R.id.description);
         final List<BitmapDescriptor> colors;
+        final Marker[] newMarker = new Marker[1];
+
         colors = Arrays.asList(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN), BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 frameLayout.setVisibility(View.VISIBLE);
-                LatLng rand = new LatLng(ThreadLocalRandom.current().nextInt(0, 20 + 1), ThreadLocalRandom.current().nextInt(110, 125 + 1));
+                button.setVisibility(View.GONE);
+            }
+        });
+        buttonPlace.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                mMap.addMarker(new MarkerOptions()
-                        .position(rand)
-                        .icon(colors.get(ThreadLocalRandom.current().nextInt(0, 1 + 1))));
+                newMarker[0] = mMap.addMarker(new MarkerOptions()
+                        .position(philippines)
+                        .title(name.getText().toString())
+                        .draggable(true)
+                        .icon(colors.get(dangerous.isChecked() ? 1 : 0)));
+                frameLayout.setVisibility(View.GONE);
+                buttonDone.setVisibility(View.VISIBLE);
 
+            }
+        });
+        buttonDone.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                newMarker[0].setDraggable(false);
+                button.setVisibility(View.VISIBLE);
+                buttonDone.setVisibility(View.GONE);
             }
         });
     }
