@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">Free Seas</string>
     <string name="title_activity_maps">Map</string>
+    <string name="report">Report</string>
+    <string name="done">Done</string>
+    <string name="safe">Safe</string>
+    <string name="place_marker">Place Marker</string>
+    <string name="dangerous">Dangerous</string>
+    <string name="add_a_new_marker_to_the_map">Add a new marker to the map</string>
+    <string name="description">Description:</string>
+    <string name="Load">LOAD</string>
+    <string name="Add">ADD</string>
+    <string name="Find">FIND</string>
+    <string name="Update">UPDATE</string>
+    <string name="add_item">Add Item</string>
+    <string name="list_items">List Items</string>
 </resources>
