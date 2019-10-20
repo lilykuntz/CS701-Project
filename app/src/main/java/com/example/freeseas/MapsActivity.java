@@ -26,6 +26,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
@@ -35,7 +36,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener, GoogleMap.OnMarkerClickListener {
 
     Button buttonAddItem, buttonListItem;
     ListAdapter adapter;
@@ -110,11 +111,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 item.put("country", country);
 
                                 list.add(item);
+                                Marker[] marker = new Marker[0];
                                 for(int m = 0; m < list.size(); m++){
-                                    // Log.d("ADAP", String.valueOf(list.get(m).get("longitude")));
                                     mMap.addMarker(new MarkerOptions()
                                             .position(new LatLng(Double.valueOf(list.get(m).get("longitude")), Double.valueOf(list.get(m).get("latitude"))))
-                                            .title(list.get(m).get("hullNumber"))
+                                            .title("Hull number: " + list.get(m).get("hullNumber"))
+                                            .snippet(list.get(m).get("country"))
                                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
                                 }
 
@@ -152,4 +154,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(philippines, 7));
     }
 
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        return false;
+    }
 }
