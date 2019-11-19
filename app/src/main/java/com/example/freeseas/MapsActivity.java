@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentActivity;
@@ -39,8 +37,6 @@ import java.util.HashMap;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener, GoogleMap.OnMarkerClickListener {
 
     Button buttonAddItem, buttonListItem;
-    ListAdapter adapter;
-    ListView listView;
     static ArrayList<HashMap<String, String>> list = new ArrayList<>();
     private GoogleMap mMap;
 
@@ -76,9 +72,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(final GoogleMap googleMap) {
         mMap = googleMap;
+        googleMap.setOnMarkerClickListener(this);
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Intent intent = new Intent(getApplicationContext(), VesselDetails.class);
+                Bundle b = new Bundle();
+                int index = Integer.parseInt(marker.getSnippet().substring(4));
+                b.putString("hullNum", "Hull Number: " + list.get(index).get("hullNumber"));
+                String description = list.get(index).get("description");
+                b.putString("description", "Description: " + description);
+                String longitude = list.get(index).get("longitude");
+                b.putString("longitude", "Longitude: " + longitude);
+                String latitude = list.get(index).get("latitude");
+                b.putString("latitude", "Latitude: " + latitude);
+                String country = list.get(index).get("country");
+                b.putString("country", "Country: " + country);
+                String image = list.get(index).get("image");
+                b.putString("image", image);
+                String date = list.get(index).get("date");
+                b.putString("date", "Date: " + date);
+                intent.putExtras(b); //Put your id to your next Intent
+                startActivity(intent);
+                //finish();
+
+            }
+        });
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://script.google.com/macros/s/AKfycbymd1EdriVU5gYDRChzTRJvNmtyEdABoGROMiN1yt9szL6mx34/exec?action=getItems",
                 new Response.Listener<String>() {
                     @Override
@@ -91,7 +113,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             for (int i = 0; i < jarray.length(); i++) {
 
                                 JSONObject jo = jarray.getJSONObject(i);
-
+                                System.out.println(jo);
                                 String itemId = jo.getString("itemId");
                                 String date = jo.getString("date");
                                 String hullNumber = jo.getString("hullNumber");
@@ -99,7 +121,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 String longitude = jo.getString("longitude");
                                 String latitude = jo.getString("latitude");
                                 String country = jo.getString("country");
-
+                                String image = jo.getString("image");
 
                                 HashMap<String, String> item = new HashMap<>();
                                 item.put("itemId", itemId);
@@ -109,14 +131,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 item.put("longitude",longitude);
                                 item.put("latitude",latitude);
                                 item.put("country", country);
+                                item.put("image", image);
 
                                 list.add(item);
                                 Marker[] marker = new Marker[0];
                                 for(int m = 0; m < list.size(); m++){
-                                    mMap.addMarker(new MarkerOptions()
+
+                                    Marker newMarker = mMap.addMarker(new MarkerOptions()
                                             .position(new LatLng(Double.valueOf(list.get(m).get("longitude")), Double.valueOf(list.get(m).get("latitude"))))
                                             .title("Hull number: " + list.get(m).get("hullNumber"))
-                                            .snippet(list.get(m).get("country"))
+                                            .snippet("ID: " + m)
                                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
                                 }
 
@@ -154,8 +178,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(philippines, 7));
     }
 
+
     @Override
-    public boolean onMarkerClick(Marker marker) {
+    public boolean onMarkerClick(Marker marker) {{
+//        Intent intent = new Intent(getApplicationContext(), VesselDetails.class);
+//        Bundle b = new Bundle();
+//        int index = Integer.parseInt(marker.getTitle().substring(5));
+//        b.putString("hullNum", "Hull Number: " + list.get(index).get("hullNumber"));
+//        String description = list.get(index).get("description");
+//        b.putString("description", "Description: " + description);
+//        String longitude = list.get(index).get("longitude");
+//        b.putString("longitude", "Longitude: " + longitude);
+//        String latitude = list.get(index).get("latitude");
+//        b.putString("latitude", "Latitude: " + latitude);
+//        String country = list.get(index).get("country");
+//        b.putString("country", "Country: " + country);
+//        String image = list.get(index).get("image");
+//        b.putString("image", image);
+//        String date = list.get(index).get("date");
+//        b.putString("date", "Date: " + date);
+//        intent.putExtras(b); //Put your id to your next Intent
+//        startActivity(intent);
+//        finish();
+
+    }
         return false;
     }
 }

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "937323718259",
+    "firebase_url": "https://free-seas-255114.firebaseio.com",
+    "project_id": "free-seas-255114",
+    "storage_bucket": "free-seas-255114.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937323718259:android:e3c0508c525885fcacac06",
+        "android_client_info": {
+          "package_name": "com.example.freeseas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937323718259-6soeljnaopic6g8dk70c8ou005rlmk7h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.freeseas",
+            "certificate_hash": "ec371171e91a01cf95ebd4b06307a8da26c165cc"
+          }
+        },
+        {
+          "client_id": "937323718259-k1nc7j5jtipccorltlar9a9i58h5n01v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQUfJPsMK7OoQFOGn38GIqWRhGPZ1tYO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937323718259-k1nc7j5jtipccorltlar9a9i58h5n01v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

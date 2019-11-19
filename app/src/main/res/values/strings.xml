@@ -14,4 +14,12 @@
     <string name="Update">UPDATE</string>
     <string name="add_item">Add Item</string>
     <string name="list_items">List Items</string>
+    <string name="take_picture">Take Picture</string>
+    <string name="image_of_vessel">image of vessel</string>
+    <string name="hull_number">Hull Number</string>
+    <string name="longitude">longitude</string>
+    <string name="latitude">latitude</string>
+    <string name="country">country</string>
+    <string name="date">date</string>
+    <string name="back">Back</string>
 </resources>

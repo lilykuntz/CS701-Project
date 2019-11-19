@@ -9,7 +9,10 @@
     -->
     <!--uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
     <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera"
+        android:required="false" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -35,12 +38,35 @@
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddItem"/>
-        <activity android:name=".ListItem"/>
+        <activity android:name=".AddItem">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MapsActivity" />
+        </activity>
+        <activity android:name=".ListItem">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MapsActivity" />
+        </activity>
+        <activity android:name=".VesselDetails">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListItem" />
+        </activity>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.freeseas.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
     </application>
+
 
 </manifest>

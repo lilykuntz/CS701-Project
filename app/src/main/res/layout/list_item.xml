@@ -12,5 +12,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="8dp"
-        android:background="#00B73A3A" />
+        android:background="#00B73A3A" >
+
+    </ListView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
