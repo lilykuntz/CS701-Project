@@ -12,7 +12,9 @@ Our Firbase Storage, where the images of the vessels are stored, can be found he
 https://console.firebase.google.com/u/0/project/free-seas-255114/storage/free-seas-255114.appspot.com/files
 
 To run:
-  (1) Clone github repository into Android Studio
+  (1) Clone github repository into Android Studio.
+  
   (2) You may need to set up an Android Virtual Divice. To do so, click "Tools" --> "AVD Manager" --> "Create Virtual Device". Select "Phone" for the category and "Pixel 2" for the name. Click "Next", "Next", "Finish".
+  
   (3) Now, click "Run 'app'".
 
