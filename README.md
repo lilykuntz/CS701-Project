@@ -15,7 +15,7 @@ To run:
 
   (1) Clone github repository into Android Studio.
   
-  (2) You may need to set up an Android Virtual Divice. To do so, click "Tools" --> "AVD Manager" --> "Create Virtual Device". Select "Phone" for the category and "Pixel 2" for the name. Click "Next", "Next", "Finish".
+  (2) You may need to set up an Android Virtual Divice. To do so, click "Tools" --> "AVD Manager" --> "Create Virtual Device". Select "Phone" for the category and "Pixel 2" for the name. Click "Next". Click "Advanced Settings". Make sure the Back Camera setting is set to "VirtualScene". Click "Next", "Finish".
   
   (3) Now, click "Run 'app'".
 
