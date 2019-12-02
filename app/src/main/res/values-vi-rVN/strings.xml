@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">biển miễn phí</string>
+    <string name="Add">bổ sung</string>
+    <string name="Find">tìm thấy</string>
+    <string name="Load">tải lên</string>
+    <string name="Update">cập nhật</string>
+    <string name="add_a_new_marker_to_the_map">thêm một vị trí mới vào bản đồ</string>
+    <string name="add_item">thêm mục</string>
+    <string name="back">quay lại</string>
+    <string name="country">Quốc gia</string>
+    <string name="dangerous">nguy hiểm</string>
+    <string name="date">ngày</string>
+    <string name="description">sự miêu tả:</string>
+    <string name="done">làm xong</string>
+    <string name="hull_number">số tàu</string>
+    <string name="image_of_vessel">hình ảnh của con tàu</string>
+    <string name="latitude">vĩ độ</string>
+    <string name="list_items">Danh sách tàu</string>
+    <string name="longitude">kinh độ</string>
+    <string name="place_marker">vị trí đã lưu</string>
+    <string name="report">vị trí đã lưu</string>
+    <string name="safe">an toàn</string>
+    <string name="take_picture">chụp một tấm</string>
+    <string name="title_activity_maps">bản đồ</string>
+</resources>

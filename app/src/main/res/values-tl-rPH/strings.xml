@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Add">Magdagdag</string>
+    <string name="Find">Hanapin</string>
+    <string name="Load">mag-upload</string>
+    <string name="Update">pag-update</string>
+    <string name="add_a_new_marker_to_the_map">magdagdag ng isang bagong marker sa mapa</string>
+    <string name="add_item">Magdagdag ng aytem</string>
+    <string name="back">balikan</string>
+    <string name="country">Bansa</string>
+    <string name="dangerous">mapanganib</string>
+    <string name="date">petsa</string>
+    <string name="description">paglalarawan:</string>
+    <string name="done">ginawa</string>
+    <string name="hull_number">numero ng barko</string>
+    <string name="image_of_vessel">larawan ng barko</string>
+    <string name="latitude">latitud</string>
+    <string name="list_items">listahan ng mga barko</string>
+    <string name="longitude">longhitud</string>
+    <string name="place_marker">lokasyon</string>
+    <string name="report">ulat</string>
+    <string name="safe">ligtas</string>
+    <string name="take_picture">kumuha ng litrato</string>
+    <string name="title_activity_maps">mapa</string>
+    <string name="app_name">Libre dagat</string>
+</resources>
