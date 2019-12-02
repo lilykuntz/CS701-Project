@@ -1,9 +1,7 @@
 package com.example.freeseas;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,7 +41,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public class AddItem extends AppCompatActivity implements View.OnClickListener {
 
@@ -52,35 +49,40 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
     private ImageView image;
     private String pictureFilePath, pictureFile;
     private FirebaseStorage firebaseStorage;
-    private String deviceIdentifier;
     EditText editTextHullNumber,editTextDescription,editTextLongitude,editTextLatitude,editTextCountry;
     Button buttonAddItem, btnTakePic;
     private StorageReference mStorageRef;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
+        // for back buttons
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // get elements from add_tem.xml
         setContentView(R.layout.add_item);
         mStorageRef = FirebaseStorage.getInstance().getReference();
-        editTextHullNumber = (EditText)findViewById(R.id.et_hull_number);
-        editTextDescription = (EditText)findViewById(R.id.et_description);
-        editTextLongitude = (EditText)findViewById(R.id.et_longitude);
-        editTextLatitude = (EditText)findViewById(R.id.et_latitude);
-        editTextCountry = (EditText)findViewById(R.id.et_country);
-        buttonAddItem = (Button)findViewById(R.id.btn_add_item);
+        editTextHullNumber = findViewById(R.id.et_hull_number);
+        editTextDescription = findViewById(R.id.et_description);
+        editTextLongitude = findViewById(R.id.et_longitude);
+        editTextLatitude = findViewById(R.id.et_latitude);
+        editTextCountry = findViewById(R.id.et_country);
+        buttonAddItem = findViewById(R.id.btn_add_item);
         buttonAddItem.setOnClickListener(this);
-        btnTakePic = (Button)findViewById(R.id.btnTakePic);
+        btnTakePic = findViewById(R.id.btnTakePic);
         btnTakePic.setOnClickListener(capture);
         image = findViewById(R.id.image);
+
+        // if there is no camera enabled
         if(!getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
             btnTakePic.setEnabled(false);
         }
 
         firebaseStorage = FirebaseStorage.getInstance();
-        getInstallationIdentifier();
-    }
 
+    }
 
     private View.OnClickListener capture = new View.OnClickListener() {
         @Override
@@ -102,13 +104,12 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+    // take picture
     private void sendTakePictureIntent() {
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraIntent.putExtra( MediaStore.EXTRA_FINISH_ON_COMPLETION, true);
         if (cameraIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(cameraIntent, REQUEST_PICTURE_CAPTURE);
-
-
+            // startActivityForResult(cameraIntent, REQUEST_PICTURE_CAPTURE);
             File pictureFile = null;
             try {
                 pictureFile = getPictureFile();
@@ -127,6 +128,8 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
             }
         }
     }
+
+    // save image as new file
     private File getPictureFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         pictureFile = "FREESEAS_" + timeStamp;
@@ -135,6 +138,8 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
         pictureFilePath = image.getAbsolutePath();
         return image;
     }
+
+    // on image capture, save image and set the image component to display it
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -145,6 +150,7 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
             }
         }
     }
+
     //save captured picture on cloud storage
     private void addToCloudStorage() {
         File f = new File(pictureFilePath);
@@ -152,9 +158,9 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
         final String cloudFilePath = picUri.getLastPathSegment();
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         StorageReference storageRef = firebaseStorage.getReference();
-        StorageReference uploadeRef = storageRef.child(cloudFilePath);
+        StorageReference uploadRef = storageRef.child(cloudFilePath);
 
-        uploadeRef.putFile(picUri).addOnFailureListener(new OnFailureListener(){
+        uploadRef.putFile(picUri).addOnFailureListener(new OnFailureListener(){
             public void onFailure(@NonNull Exception exception){
                 Log.e(TAG,"Failed to upload picture to cloud storage");
             }
@@ -167,24 +173,8 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
             }
         });
     }
-    protected synchronized String getInstallationIdentifier() {
-        if (deviceIdentifier == null) {
-            SharedPreferences sharedPrefs = this.getSharedPreferences(
-                    "DEVICE_ID", Context.MODE_PRIVATE);
-            deviceIdentifier = sharedPrefs.getString("DEVICE_ID", null);
-            if (deviceIdentifier == null) {
-                deviceIdentifier = UUID.randomUUID().toString();
-                SharedPreferences.Editor editor = sharedPrefs.edit();
-                editor.putString("DEVICE_ID", deviceIdentifier);
-                editor.commit();
-            }
-        }
-        return deviceIdentifier;
-    }
 
-
-    //This is the part where data is transafeered from Your Android phone to Sheet by using HTTP Rest API calls
-
+    //This is the part where data is transferred from Your Android phone to Sheet by using HTTP Rest API calls
     private void   addItemToSheet() {
 
         final ProgressDialog loading = ProgressDialog.show(this,"Adding Item","Please wait");
@@ -216,18 +206,18 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
         ) {
             @Override
             protected Map<String, String> getParams() {
-                Map<String, String> parmas = new HashMap<>();
+                Map<String, String> params = new HashMap<>();
                 //here we pass params
-                parmas.put("action", "addItem");
-                parmas.put("hullNumber", hullNumber);
-                parmas.put("description", description);
-                parmas.put("longitude", longitude);
-                parmas.put("latitude", latitude);
-                parmas.put("country", country);
-                parmas.put("image", image);
+                params.put("action", "addItem");
+                params.put("hullNumber", hullNumber);
+                params.put("description", description);
+                params.put("longitude", longitude);
+                params.put("latitude", latitude);
+                params.put("country", country);
+                params.put("image", image);
                 System.out.println("countrt!!!!:" + country);
                 System.out.println("path!!!!:" + image);
-                return parmas;
+                return params;
 
             }
         };
@@ -256,7 +246,6 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
             addToCloudStorage();
             addItemToSheet();
 
-            //Define what to do when button is clicked
         }
 
     }

@@ -21,6 +21,8 @@ public class VesselDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // get parameters that were passed over
         Bundle b = getIntent().getExtras();
         String hullNum = null, description = null, longitude = null, latitude = null, image = null, country = null, date = null;
         if(b != null) {
@@ -35,11 +37,13 @@ public class VesselDetails extends AppCompatActivity {
 
         setContentView(R.layout.vessel_details);
 
+        // for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        // set up firebase storae
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference listRef = storage.getReferenceFromUrl("gs://free-seas-255114.appspot.com/");
-        System.out.println("IMAGE!!!!!: "+ image);
+
         if(image != null) {
             File imgFile = new File(image);
             if(imgFile.exists()) {
@@ -50,6 +54,7 @@ public class VesselDetails extends AppCompatActivity {
             }
         }
 
+        // get the components of the page
         TextView hullNumber = findViewById(R.id.hullNumber);
         TextView descrip = findViewById(R.id.description);
         TextView lon = findViewById(R.id.longitude);
@@ -58,7 +63,7 @@ public class VesselDetails extends AppCompatActivity {
         TextView dt = findViewById(R.id.date);
 
 
-
+        // set the components to the corresponding fields
         hullNumber.setText(hullNum);
         descrip.setText(description);
         lon.setText(longitude);

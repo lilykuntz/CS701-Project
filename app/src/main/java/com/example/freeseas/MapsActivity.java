@@ -43,6 +43,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_maps);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -55,12 +56,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void onClick(View v) {
 
+        // on click of "Report"
         if (v == buttonAddItem) {
 
             Intent intent = new Intent(getApplicationContext(), AddItem.class);
             startActivity(intent);
         }
 
+        // on click of "List All"
         if (v == buttonListItem) {
 
             Intent intent = new Intent(getApplicationContext(), ListItem.class);
@@ -75,6 +78,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(final GoogleMap googleMap) {
         mMap = googleMap;
         googleMap.setOnMarkerClickListener(this);
+
+        // on click of marker info window, pass parameters to VesselDetails.java
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 
             @Override
@@ -101,6 +106,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             }
         });
+
+        // Google App Script GET
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://script.google.com/macros/s/AKfycbymd1EdriVU5gYDRChzTRJvNmtyEdABoGROMiN1yt9szL6mx34/exec?action=getItems",
                 new Response.Listener<String>() {
                     @Override
@@ -113,7 +120,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             for (int i = 0; i < jarray.length(); i++) {
 
                                 JSONObject jo = jarray.getJSONObject(i);
-                                System.out.println(jo);
+
+                                // parse json data
                                 String itemId = jo.getString("itemId");
                                 String date = jo.getString("date");
                                 String hullNumber = jo.getString("hullNumber");
@@ -133,17 +141,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 item.put("country", country);
                                 item.put("image", image);
 
+                                // add vessel item to list
                                 list.add(item);
-                                Marker[] marker = new Marker[0];
-                                for(int m = 0; m < list.size(); m++){
 
+                                Marker[] marker = new Marker[0];
+
+                                // for each item in our database, add a marker with corresponding data
+                                for(int m = 0; m < list.size(); m++){
                                     Marker newMarker = mMap.addMarker(new MarkerOptions()
                                             .position(new LatLng(Double.valueOf(list.get(m).get("longitude")), Double.valueOf(list.get(m).get("latitude"))))
                                             .title("Hull number: " + list.get(m).get("hullNumber"))
                                             .snippet("ID: " + m)
                                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
                                 }
-
 
                             }
                         } catch (JSONException e) {
@@ -179,27 +189,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
+    // make the marker clickable
     @Override
     public boolean onMarkerClick(Marker marker) {{
-//        Intent intent = new Intent(getApplicationContext(), VesselDetails.class);
-//        Bundle b = new Bundle();
-//        int index = Integer.parseInt(marker.getTitle().substring(5));
-//        b.putString("hullNum", "Hull Number: " + list.get(index).get("hullNumber"));
-//        String description = list.get(index).get("description");
-//        b.putString("description", "Description: " + description);
-//        String longitude = list.get(index).get("longitude");
-//        b.putString("longitude", "Longitude: " + longitude);
-//        String latitude = list.get(index).get("latitude");
-//        b.putString("latitude", "Latitude: " + latitude);
-//        String country = list.get(index).get("country");
-//        b.putString("country", "Country: " + country);
-//        String image = list.get(index).get("image");
-//        b.putString("image", image);
-//        String date = list.get(index).get("date");
-//        b.putString("date", "Date: " + date);
-//        intent.putExtras(b); //Put your id to your next Intent
-//        startActivity(intent);
-//        finish();
 
     }
         return false;

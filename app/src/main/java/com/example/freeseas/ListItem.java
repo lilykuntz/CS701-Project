@@ -44,10 +44,14 @@ public class ListItem extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.list_item);
 
-        listView = (ListView) findViewById(R.id.lv_items);
+        listView = findViewById(R.id.lv_items);
+
+        // for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         getItems();
 
     }
@@ -64,9 +68,9 @@ public class ListItem extends AppCompatActivity {
     }
     public void getItems() {
 
-
         loading =  ProgressDialog.show(this,"Loading","please wait",false,true);
 
+        // Google App Script GET
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://script.google.com/macros/s/AKfycbymd1EdriVU5gYDRChzTRJvNmtyEdABoGROMiN1yt9szL6mx34/exec?action=getItems",
                 new Response.Listener<String>() {
                     @Override
@@ -94,6 +98,7 @@ public class ListItem extends AppCompatActivity {
     }
 
 
+    // parse json data
     public void parseItems(String jsonResponse) {
         try {
             JSONObject jobj = new JSONObject(jsonResponse);
@@ -121,6 +126,7 @@ public class ListItem extends AppCompatActivity {
                 item.put("latitude","Latitude: " + latitude);
                 item.put("country", "Country: " + country);
                 item.put("image", image);
+                // add each item in database to list
                 list.add(item);
 
             }
@@ -133,15 +139,17 @@ public class ListItem extends AppCompatActivity {
 
 
         listView.setAdapter(adapter);
+
+        // on click of list item display more info
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position,
                                     long id) {
 
                 Intent intent = new Intent(getApplicationContext(), VesselDetails.class);
+
+                // send data over to Vessel Details as parameters
                 Bundle b = new Bundle();
-                System.out.println(position);
-                System.out.println(id);
                 b.putInt("id", (int) id); //Your id
                 String hullNum = list.get((int) id).get("hullNumber");
                 b.putString("hullNum", hullNum);

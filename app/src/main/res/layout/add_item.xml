@@ -14,7 +14,7 @@
         android:layout_marginBottom="8dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="Hull Number"
+        android:hint="@string/hull_number"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/et_description"
         app:layout_constraintStart_toStartOf="parent" />
@@ -38,7 +38,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:ems="10"
-        android:hint="Longitude"
+        android:hint="@string/longitude"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/et_latitude"
         app:layout_constraintStart_toStartOf="parent" />
@@ -50,7 +50,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:ems="10"
-        android:hint="Latitude"
+        android:hint="@string/latitude"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/et_country"
         app:layout_constraintStart_toStartOf="parent" />
@@ -62,7 +62,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:ems="10"
-        android:hint="Country"
+        android:hint="@string/country"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_latitude" />
