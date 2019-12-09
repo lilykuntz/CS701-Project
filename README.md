@@ -1,5 +1,4 @@
 # Free Seas
-Annie Glassie and Lily Kuntz
 
 **Free Seas** is an Android application that serves as a platform to empower the Filipino fishing community and help them take action in regards to violence in the South China Sea by documenting identifying features of the perpetrators of violence at sea. [Click here to see what is happening in the South China Sea. ](https://www.vox.com/videos/2017/2/17/14642818/china-south-china-sea-us-islands
 ) Chinese quasi-military vessels are attempting to intimidate the filipino fishing community by committing violent acts against filipino fishing boats that are not easily documentable and the Chinese deny. The Filipino fishing community currently lacks sufficient safety measures to avert disaster and a comprehensive method of evidence collection against the perpetrators. Thus, Free Seas' key features include a database of reported vessels in the South China Sea that the user can either see on the map, or in a list of all reported vessels, and the ability to report a new vessel by documenting the hull number, description, longitude, latitude, country, and image evidence of a dangerous vessel. 
