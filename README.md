@@ -54,6 +54,7 @@ Displays all information about the selected vessel
 
 
 
+
 * From all screens (besides the Home Screen) you can always click the back arrow in the top left corner to return to the previous page. 
 
 
