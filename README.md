@@ -32,7 +32,7 @@ Our [Firebase Storage](https://console.firebase.google.com/u/0/project/free-seas
 
 **(Screen 1) Home Screen:**
 
-![Home Screen](https://github.com/lilykuntz/CS701-Project/blob/master/homeScreen.png)
+![Home Screen](https://github.com/lilykuntz/CS701-Project/blob/master/screenshots/homeScreen.png)
 
 From here you can:
 1. Click on "Report" to report a new vessel. --> (Screen 2)
@@ -41,7 +41,7 @@ From here you can:
 
 **(Screen 2) Report Screen:**
 
-![Report Screen](https://github.com/lilykuntz/CS701-Project/blob/master/reportFields.png)
+![Report Screen](https://github.com/lilykuntz/CS701-Project/blob/master/screenshots/reportFields.png)
 
 From here you can:
 1. Click on the input fields and use the keyboard to fill out the different fields.
@@ -50,18 +50,18 @@ From here you can:
 
 An example of how a user might fill out the Report Screen can be seen below:
 
-![Report Example](https://github.com/lilykuntz/CS701-Project/blob/master/filledOut.png)
+![Report Example](https://github.com/lilykuntz/CS701-Project/blob/master/screenshots/filledOut.png)
 
 **(Screen 3) List All Screen:**
 
-![List All Screen](https://github.com/lilykuntz/CS701-Project/blob/master/listAll.png)
+![List All Screen](https://github.com/lilykuntz/CS701-Project/blob/master/screenshots/listAll.png)
 
 From here you can:
 1. Click on a list item to see more details about the selected vessel. --> (Screen 4). 
 
 **(Screen 4) Vessel Details Screen:**
 
-![Vessel Details Screen](https://github.com/lilykuntz/CS701-Project/blob/master/details.png)
+![Vessel Details Screen](https://github.com/lilykuntz/CS701-Project/blob/master/screenshots/details.png)
 
 Displays all information about the selected vessel
 
