@@ -39,6 +39,10 @@ From here you can:
 2. Click "take photo" and capture a photograph.
 3. Click "Report" to add the inputted data to the database. Your reported vessel will then appear on both the Home Screen (Screen 1) as a marker on the map and in the list on the List All Screen (Screen 3).
 
+An example of how a user might fill out the Report Screen can be seen below:
+
+![Report Example](https://github.com/lilykuntz/CS701-Project/blob/master/filledOut.png)
+
 ### (Screen 3) List All Screen:
 
 ![List All Screen](https://github.com/lilykuntz/CS701-Project/blob/master/listAll.png)
