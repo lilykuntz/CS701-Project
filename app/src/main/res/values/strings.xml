@@ -8,6 +8,7 @@
     <string name="dangerous">Dangerous</string>
     <string name="add_a_new_marker_to_the_map">Add a new marker to the map</string>
     <string name="description">Description:</string>
+    <string name="incident">Incident</string>
     <string name="Load">LOAD</string>
     <string name="Add">ADD</string>
     <string name="Find">FIND</string>
@@ -22,4 +23,7 @@
     <string name="country">country</string>
     <string name="date">date</string>
     <string name="back">Back</string>
+    <string name="take_video">Take Video</string>
+    <string name="backgr">TODO</string>
+    <string name="list_all">List All</string>
 </resources>

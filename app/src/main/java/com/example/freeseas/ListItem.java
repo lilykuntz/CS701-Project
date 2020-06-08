@@ -113,19 +113,23 @@ public class ListItem extends AppCompatActivity {
                 String date = jo.getString("date");
                 String hullNumber = jo.getString("hullNumber");
                 String description = jo.getString("description");
+                String incident = jo.getString("incident");
                 String longitude = jo.getString("longitude");
                 String latitude = jo.getString("latitude");
                 String country = jo.getString("country");
                 String image = jo.getString("image");
+                String video = jo.getString("video");
 
                 HashMap<String, String> item = new HashMap<>();
                 item.put("date", "Date: " + date);
                 item.put("hullNumber", "Hull Number: " + hullNumber);
                 item.put("description", "Description: " + description);
+                item.put("incident", "Incident: " + incident);
                 item.put("longitude", "Longitude: " + longitude);
                 item.put("latitude","Latitude: " + latitude);
                 item.put("country", "Country: " + country);
                 item.put("image", image);
+                item.put("video", video);
                 // add each item in database to list
                 list.add(item);
 
@@ -135,7 +139,7 @@ public class ListItem extends AppCompatActivity {
         }
 
         adapter = new SimpleAdapter(this,list,R.layout.list_item_row,
-                new String[]{"hullNumber","description","country"},new int[]{R.id.tv_hull_number,R.id.tv_description,R.id.tv_country});
+                new String[]{"hullNumber","description","incident", "country"},new int[]{R.id.tv_hull_number,R.id.tv_description,R.id.tv_incident, R.id.tv_country});
 
 
         listView.setAdapter(adapter);
@@ -155,6 +159,8 @@ public class ListItem extends AppCompatActivity {
                 b.putString("hullNum", hullNum);
                 String description = list.get((int) id).get("description");
                 b.putString("description", description);
+                String incident = list.get((int) id).get("incident");
+                b.putString("incident", incident);
                 String longitude = list.get((int) id).get("longitude");
                 b.putString("longitude", longitude);
                 String latitude = list.get((int) id).get("latitude");
@@ -163,6 +169,8 @@ public class ListItem extends AppCompatActivity {
                 b.putString("country", country);
                 String image = list.get((int) id).get("image");
                 b.putString("image", image);
+                String video = list.get((int) id).get("video");
+                b.putString("video", video);
                 String date = list.get((int) id).get("date");
                 b.putString("date", date);
                 intent.putExtras(b); //Put your id to your next Intent

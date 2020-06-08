@@ -2,22 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/btnPlay"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <EditText
-        android:id="@+id/et_hull_number"
-        android:layout_width="152dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginBottom="8dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/hull_number"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/et_description"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/et_description"
@@ -25,35 +12,28 @@
         android:layout_height="44dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/description"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/et_longitude"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_hull_number" />
 
     <EditText
-        android:id="@+id/et_longitude"
+        android:id="@+id/et_hull_number"
         android:layout_width="152dp"
-        android:layout_height="wrap_content"
+        android:layout_height="43dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="@string/longitude"
+        android:hint="@string/hull_number"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/et_latitude"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/et_latitude"
-        android:layout_width="152dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:ems="10"
-        android:hint="@string/latitude"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/et_country"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_country"
@@ -61,27 +41,68 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/country"
         android:inputType="textPersonName"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_latitude" />
+        app:layout_constraintTop_toBottomOf="@+id/et_incident" />
+
+    <EditText
+        android:id="@+id/et_incident"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/incident"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_description" />
+
+    <TextView
+        android:id="@+id/et_longitude"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="@string/longitude"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_country" />
+
+    <TextView
+        android:id="@+id/et_latitude"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="@string/latitude"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_longitude" />
 
     <Button
         android:id="@+id/btnTakePic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="267dp"
-        android:layout_marginRight="267dp"
-        android:layout_marginBottom="44dp"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/colorAccent"
         android:text="@string/take_picture"
-        app:layout_constraintBottom_toTopOf="@+id/btn_add_item"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_country" />
+        app:layout_constraintTop_toBottomOf="@+id/et_latitude" />
 
     <ImageView
         android:id="@+id/image"
@@ -96,22 +117,54 @@
         android:contentDescription="@string/image_of_vessel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toEndOf="@+id/et_description"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.136"
         tools:srcCompat="@tools:sample/avatars[14]" />
+
+    <VideoView
+        android:id="@+id/video"
+        android:layout_width="191dp"
+        android:layout_height="222dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.913"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.734" />
+
+    <Button
+        android:id="@+id/btnTakeVid"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="12dp"
+        android:background="#E91E63"
+        android:text="@string/take_video"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTakePic" />
 
     <Button
         android:id="@+id/btn_add_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="299dp"
-        android:layout_marginRight="299dp"
+        android:layout_width="134dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="138dp"
+        android:layout_marginLeft="138dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="138dp"
+        android:layout_marginRight="138dp"
+        android:background="@color/colorPrimaryDark"
         android:text="@string/report"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTakePic" />
+        app:layout_constraintTop_toBottomOf="@+id/btnTakeVid" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

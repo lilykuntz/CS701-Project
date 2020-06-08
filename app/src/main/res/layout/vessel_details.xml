@@ -1,59 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical">-->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/hullNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hull_number"
-        android:textSize="30sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/date"
-        android:textSize="20sp" />
+            <TextView
+                android:id="@+id/hullNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hull_number"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/description"
-        android:textSize="25sp" />
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/date"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/country"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/country"
-        android:textSize="25sp" />
+            <TextView
+                android:id="@+id/country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/country"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/longitude"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/longitude"
-        android:textSize="20sp" />
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/latitude"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/latitude"
-        android:textSize="20sp" />
+            <TextView
+                android:id="@+id/incident"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/incident"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="257dp"
-        android:layout_marginTop="20dp"
-        android:contentDescription="@string/image_of_vessel"
-        tools:srcCompat="@tools:sample/avatars[12]" />
-</LinearLayout>
+            <TextView
+                android:id="@+id/longitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/longitude"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/latitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/latitude"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="21dp" />
+
+            <VideoView
+                android:id="@+id/videoView"
+                android:layout_width="215dp"
+                android:layout_height="319dp"
+                android:layout_marginStart="20sp"
+                android:layout_marginLeft="20sp"
+                android:layout_marginBottom="20sp"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="215dp"
+                android:layout_height="279dp"
+                android:layout_marginLeft="20sp"
+                android:layout_marginBottom="100sp"
+                android:contentDescription="@string/image_of_vessel"
+                tools:srcCompat="@tools:sample/avatars[12]"
+                android:layout_marginStart="20sp" />
+
+        </LinearLayout>
+    </ScrollView>
+<!--</LinearLayout>-->
